@@ -6,7 +6,7 @@ echo 'Finished cloning'
 
 cd student-submission
 
-if [[-e ListExamples.java]]
+if [[ -e ListExamples.java ]]
 
 then 
     echo "ListExamples.java found"
@@ -21,12 +21,14 @@ mkdir testDirectory
 
 cp ./student-submission/ListExamples.java ./testDirectory
 cp ./TestListExamples.java ./testDirectory
+cp -r lib ./testDirectory
+
 
 cd testDirectory
 
 javac -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar *.java > compile.txt
 
-if [[$? -eq 0]]
+if [[ $? -eq 0 ]]
 
 then
     echo "compile sucessful"
